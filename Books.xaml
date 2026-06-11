@@ -1,0 +1,218 @@
+﻿<Window x:Class="WpfApp3.Books"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3"
+        mc:Ignorable="d"
+        Closing="Window_Closing"
+        Title="Библиотечный каталог" Height="600" Width="1024" ResizeMode="CanMinimize">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Книги">
+                <Grid Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" 
+                Orientation="Horizontal" 
+                Margin="0,0,0,15">
+
+                        <Button x:Name="AddButton" 
+                Content="Добавить" 
+                Width="120" 
+                Height="32" 
+                Margin="0,0,10,0"
+                Click="AddButton_Click"/>
+
+                        <Button x:Name="EditButton" 
+                Content="Редактировать" 
+                Width="130" 
+                Height="32" 
+                Margin="0,0,10,0"
+                Click="EditButton_Click"/>
+
+                        <Button x:Name="DeleteButton" 
+                Content="Удалить" 
+                Width="120" 
+                Height="32"
+                Click="DeleteButton_Click"/>
+                    </StackPanel>
+
+                   
+                    <DataGrid x:Name="BooksDataGrid"
+              Grid.Row="1"
+              AutoGenerateColumns="False"
+              CanUserAddRows="False"
+              SelectionMode="Single"
+              HeadersVisibility="Column"
+              RowHeight="35"
+              CanUserReorderColumns="False"
+              CanUserResizeColumns="False"
+              CanUserSortColumns="False"
+              IsReadOnly="True">
+                        
+
+                        <DataGrid.Columns>
+                            
+                            <DataGridTextColumn Header="ID" 
+                                Binding="{Binding Id}" 
+                                Width="50" 
+                                IsReadOnly="True"/>
+
+                           
+                            <DataGridTextColumn Header="Название книги" 
+                                Binding="{Binding Title}" 
+                                Width="2*"/>
+
+                            
+                            <DataGridTextColumn Header="Автор" 
+                                Binding="{Binding Author}" 
+                                Width="1.5*"/>
+
+                            
+                            <DataGridTextColumn Header="Жанр" 
+                                Binding="{Binding Genre}" 
+                                Width="1*"/>
+
+                            
+                            <DataGridTextColumn Header="Год выпуска" 
+                                Binding="{Binding Year}" 
+                                Width="100"/>
+
+                            
+                            <DataGridTextColumn Header="Кол-во экземпляров" 
+                                Binding="{Binding Quantity}" 
+                                Width="140"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+
+            </TabItem>
+            <TabItem Header="Читатели">
+                <Grid Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" 
+  Orientation="Horizontal" 
+  Margin="0,0,0,15">
+
+                        <Button x:Name="AddButton2" 
+  Content="Добавить" 
+  Width="120" 
+  Height="32" 
+  Margin="0,0,10,0"
+  Click="AddButton2_Click"/>
+
+                        <Button x:Name="EditButton2" 
+  Content="Редактировать" 
+  Width="120" 
+  Height="32" 
+  Margin="0,0,10,0"
+  Click="EditButton2_Click"/>
+
+                        <Button x:Name="DeleteButton2" 
+  Content="Удалить" 
+  Width="120" 
+  Height="32"
+  Click="DeleteButton2_Click"/>
+                    </StackPanel>
+
+
+                    <DataGrid x:Name="ReadersDataGrid"
+Grid.Row="1"
+AutoGenerateColumns="False"
+CanUserAddRows="False"
+SelectionMode="Single"
+HeadersVisibility="Column"
+RowHeight="35"
+CanUserReorderColumns="False"
+CanUserResizeColumns="False"
+CanUserSortColumns="False"
+IsReadOnly="True">
+
+
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="ID" 
+                  Binding="{Binding Id}" 
+                  Width="50" 
+                  IsReadOnly="True"/>
+
+
+                            <DataGridTextColumn Header="ФИО Читателя" 
+                  Binding="{Binding FullName}" 
+                  Width="1.*"/>
+
+
+                            <DataGridTextColumn Header="Номер читательского билета" 
+                  Binding="{Binding TicketNumber}" 
+                  Width="0.5*"/>
+
+
+                            <DataGridTextColumn Header="Телефон" 
+                  Binding="{Binding Phone}" 
+                  Width="0.5*"/>
+
+
+                            <DataGridTextColumn Header="Дата Регистрации" 
+                  Binding="{Binding RegistrationDate}" 
+                  Width="150"/>
+
+
+                            
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Бронирование">
+                <Grid Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,15">
+                        <Button x:Name="AddBookingButton" 
+                    Content="Забронировать" 
+                    Width="140" 
+                    Height="32" 
+                    Margin="0,0,10,0"
+                    Click="AddBookingButton_Click"/>
+
+                        <Button x:Name="DeleteBookingButton" 
+                    Content="Отменить бронь" 
+                    Width="140" 
+                    Height="32"
+                    Click="DeleteBookingButton_Click"/>
+                    </StackPanel>
+
+                    <DataGrid x:Name="BookingsDataGrid"
+                  Grid.Row="1"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  SelectionMode="Single"
+                  HeadersVisibility="Column"
+                  RowHeight="35"
+                  CanUserReorderColumns="False"
+                  CanUserResizeColumns="False"
+                  CanUserSortColumns="False"           
+                  IsReadOnly="True">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="№ Билета" Binding="{Binding ReaderTicket}" Width="100"/>
+                            <DataGridTextColumn Header="Читатель" Binding="{Binding ReaderName}" Width="2*"/>
+                            <DataGridTextColumn Header="Забронированная книга" Binding="{Binding BookTitle}" Width="2*"/>
+                            <DataGridTextColumn Header="Дата брони" Binding="{Binding BookingDate, StringFormat=\{0:dd.MM.yyyy HH:mm\}}" Width="140"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
